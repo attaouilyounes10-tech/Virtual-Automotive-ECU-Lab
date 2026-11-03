@@ -1,0 +1,6 @@
+﻿.venv/
+node_modules/
+frontend/dist/
+frontend/.vite/
+*.log
+test_results.txt

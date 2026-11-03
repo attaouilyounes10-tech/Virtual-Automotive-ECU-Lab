@@ -1,0 +1,79 @@
+VERSION "1.0.0"
+
+NS_ :
+    BA_
+    BA_DEF_
+    BA_DEF_DEF_
+    BA_DEF_DEF_REL_
+    BA_DEF_REL_
+    BA_DEF_SGTYPE_
+    BA_REL_
+    BO_
+    BU_
+    BU_BO_REL_
+    BU_SGTYPE_REL_
+    CAT_
+    CAT_DEF_
+    CM_
+    ENVVAR_DATA_
+    EV_DATA_
+    ENVVAR_
+    FILTER
+    NS_DESC_
+    SGTYPE_
+    SGTYPE_VAL_
+    SG_
+    SG_MUL_VAL_
+    VAL_
+    VAL_TABLE_
+
+BS_:
+
+BU_: ADAS_ECU VCU Dashboard_ECU Diagnostic_ECU
+
+BO_ 256 ADAS_STATUS: 8 ADAS_ECU
+ SG_ ADAS_Active : 0|1@1+ (1,0) [0|1] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ ADAS_Mode : 1|3@1+ (1,0) [0|7] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Vehicle_Detected : 4|1@1+ (1,0) [0|1] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Obstacle_Distance_m : 8|16@1+ (0.01,0) [0|655.35] "m" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Relative_Speed_mps : 24|12@1+ (0.01,-20.48) [-20.48|20.47] "m/s" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Collision_Risk_Level : 36|2@1+ (1,0) [0|3] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ FCW_Active : 38|1@1+ (1,0) [0|1] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ AEB_Active : 39|1@1+ (1,0) [0|1] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Reserved : 40|24@1+ (1,0) [0|16777215] "" ADAS_ECU
+
+BO_ 257 COLLISION_WARNING: 8 ADAS_ECU
+ SG_ Warning_Level : 0|2@1+ (1,0) [0|3] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Time_To_Collision_s : 8|12@1+ (0.01,0) [0|40.95] "s" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Distance_At_Warning_m : 20|16@1+ (0.01,0) [0|655.35] "m" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Closing_Speed_mps : 36|12@1+ (0.01,-20.48) [-20.48|20.47] "m/s" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Warning_Type : 48|3@1+ (1,0) [0|7] "" ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Reserved : 51|13@1+ (1,0) [0|8191] "" ADAS_ECU
+
+BO_ 512 VEHICLE_STATUS: 8 VCU
+ SG_ Vehicle_Speed_kmh : 0|16@1+ (0.01,0) [0|655.35] "km/h" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Target_Speed_kmh : 16|16@1+ (0.01,0) [0|655.35] "km/h" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Acceleration_mps2 : 32|12@1+ (0.01,-20.48) [-20.48|20.47] "m/s^2" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Throttle_Position_Pct : 44|8@1+ (0.5,0) [0|100] "%" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Brake_Pressure_Bar : 52|12@1+ (0.01,0) [0|40.95] "bar" VCU,ADAS_ECU,Dashboard_ECU
+
+BO_ 513 BRAKE_COMMAND: 4 VCU
+ SG_ Brake_Request : 0|1@1+ (1,0) [0|1] "" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Brake_Force_N : 8|16@1+ (1,0) [0|65535] "N" VCU,ADAS_ECU,Dashboard_ECU
+ SG_ Brake_Duration_ms : 24|8@1+ (1,0) [0|255] "ms" VCU,ADAS_ECU,Dashboard_ECU
+
+BO_ 768 DASHBOARD_ALERT: 8 Dashboard_ECU
+ SG_ Alert_Type : 0|4@1+ (1,0) [0|15] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Level : 4|2@1+ (1,0) [0|3] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Message_ID : 6|10@1+ (1,0) [0|1023] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Value : 16|16@1+ (1,0) [0|65535] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Active : 32|1@1+ (1,0) [0|1] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Count : 33|8@1+ (1,0) [0|255] "" Dashboard_ECU,ADAS_ECU,VCU
+ SG_ Alert_Timestamp_s : 41|23@1+ (1,0) [0|8388607] "s" Dashboard_ECU,ADAS_ECU,VCU
+
+BO_ 1792 SYSTEM_DIAGNOSTICS: 8 Diagnostic_ECU
+ SG_ ECU_ID : 0|8@1+ (1,0) [0|255] "" Diagnostic_ECU,ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Error_Code : 8|16@1+ (1,0) [0|65535] "" Diagnostic_ECU,ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Error_Severity : 24|2@1+ (1,0) [0|3] "" Diagnostic_ECU,ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Error_Count : 26|10@1+ (1,0) [0|1023] "" Diagnostic_ECU,ADAS_ECU,VCU,Dashboard_ECU
+ SG_ Uptime_s : 36|28@1+ (1,0) [0|268435455] "s" Diagnostic_ECU,ADAS_ECU,VCU,Dashboard_ECU

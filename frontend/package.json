@@ -1,0 +1,46 @@
+{
+  "name": "vaec-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "vitest run",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@radix-ui/react-slot": "^1.5.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "axios": "^1.7.9",
+    "clsx": "^2.1.1",
+    "date-fns": "^3.0.6",
+    "framer-motion": "^11.11.0",
+    "lucide-react": "^0.456.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "react-router-dom": "^6.28.0",
+    "recharts": "^2.15.0",
+    "tailwind-merge": "^2.5.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.4.6",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.18.0",
+    "@typescript-eslint/parser": "^8.18.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^8.57.1",
+    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "jsdom": "^24.1.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "vitest": "^2.0.5"
+  }
+}
