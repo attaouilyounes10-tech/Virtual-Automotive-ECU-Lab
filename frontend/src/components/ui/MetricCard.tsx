@@ -1,56 +1,51 @@
-import { motion } from 'framer-motion'
-import { Card, CardContent, CardHeader, CardTitle } from './card'
+﻿import { motion } from "framer-motion"
+import { Card, CardContent, CardHeader, CardTitle } from "./card"
 
 export default function MetricCard({
   title,
   value,
   unit,
   icon: IconComponent,
-  status = 'neutral',
+  status = "neutral",
   trend,
 }: {
   title: string
   value: number | string
   unit: string
   icon: React.ElementType
-  status?: 'neutral' | 'warning' | 'error' | 'success'
+  status?: "neutral" | "warning" | "error" | "success"
   trend?: { value: number; isUp: boolean }
 }) {
   const statusColors = {
-    neutral: 'border-gray-800 bg-gray-900/50',
-    warning: 'border-yellow-800 bg-yellow-900/20',
-    error: 'border-red-800 bg-red-900/20',
-    success: 'border-green-800 bg-green-900/20',
-  }
-
-  const statusBorder = {
-    neutral: 'border-l-gray-500',
-    warning: 'border-l-yellow-500',
-    error: 'border-l-red-500',
-    success: 'border-l-green-500',
+    neutral: "border-gray-700 bg-gray-900/80",
+    warning: "border-yellow-600 bg-yellow-900/30",
+    error: "border-red-600 bg-red-900/30",
+    success: "border-green-600 bg-green-900/30",
   }
 
   return (
     <motion.div
-      whileHover={{ scale: 1.02 }}
-      className="h-full"
+      whileHover={{ y: -2 }}
+      className="h-full flex flex-col"
     >
-      <Card
-        className={`h-full border-l-4 ${statusColors[status]} ${statusBorder[status]}`}
-      >
-        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium text-gray-400">{title}</CardTitle>
-          <IconComponent
-            className="h-4 w-4"
-            style={{ color: status === 'neutral' ? '#6B7280' : status === 'warning' ? '#D97706' : status === 'error' ? '#EF4444' : '#22C55E' }}
-          />
+      <Card className={`h-full rounded-lg border ${statusColors[status]} shadow-sm`}>
+        <CardHeader className="pb-2">
+          <div className="flex items-start justify-between">
+            <CardTitle className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider line-clamp-1">
+              {title}
+            </CardTitle>
+            <IconComponent
+              className="h-4 w-4 opacity-70"
+              style={{ color: status === "neutral" ? "#9CA3AF" : status === "warning" ? "#FBBF24" : status === "error" ? "#F87171" : "#4ADE80" }}
+            />
+          </div>
         </CardHeader>
-        <CardContent>
-          <div className="text-2xl font-bold">{typeof value === 'number' ? value.toFixed(2) : value}</div>
-          <span className="text-sm font-normal text-gray-500">{unit}</span>
+        <CardContent className="flex-1 flex flex-col justify-center space-y-1">
+          <div className="text-xl font-bold tracking-tight leading-none">{typeof value === "number" ? value.toFixed(1) : value}</div>
+          <div className="text-[10px] font-medium text-gray-500 truncate">{unit}</div>
           {trend && (
-            <p className={`text-xs mt-1 ${trend.isUp ? 'text-green-400' : 'text-red-400'}`}>
-              {trend.isUp ? '↑' : '↓'} {Math.abs(trend.value).toFixed(2)}%
+            <p className={`text-[10px] font-medium ${trend.isUp ? "text-green-400" : "text-red-400"}`}>
+              {trend.isUp ? "↑" : "↓"} {Math.abs(trend.value).toFixed(1)}%
             </p>
           )}
         </CardContent>
