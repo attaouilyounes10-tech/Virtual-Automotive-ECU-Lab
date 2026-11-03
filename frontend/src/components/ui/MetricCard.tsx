@@ -28,8 +28,8 @@ export default function MetricCard({
       whileHover={{ y: -2 }}
       className="h-full flex flex-col"
     >
-      <Card className={`h-full rounded-lg border ${statusColors[status]} shadow-sm`}>
-        <CardHeader className="pb-2">
+      <Card className={`h-full rounded-xl border ${statusColors[status]} shadow-sm`}>
+        <CardHeader className="pb-3 px-3">
           <div className="flex items-start justify-between">
             <CardTitle className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider line-clamp-1">
               {title}
@@ -40,11 +40,11 @@ export default function MetricCard({
             />
           </div>
         </CardHeader>
-        <CardContent className="flex-1 flex flex-col justify-center space-y-1">
-          <div className="text-xl font-bold tracking-tight leading-none">{typeof value === "number" ? value.toFixed(1) : value}</div>
-          <div className="text-[10px] font-medium text-gray-500 truncate">{unit}</div>
+        <CardContent className="px-3 pb-3 flex-1 flex flex-col justify-center space-y-2">
+          <div className="text-2xl font-bold tracking-tight leading-none text-gray-100">{typeof value === "number" ? value.toFixed(1) : value}</div>
+          <div className="text-xs font-medium text-gray-500">{unit}</div>
           {trend && (
-            <p className={`text-[10px] font-medium ${trend.isUp ? "text-green-400" : "text-red-400"}`}>
+            <p className={`text-xs font-medium ${trend.isUp ? "text-green-400" : "text-red-400"}`}>
               {trend.isUp ? "↑" : "↓"} {Math.abs(trend.value).toFixed(1)}%
             </p>
           )}
